@@ -1,12 +1,23 @@
 import axios from 'axios'
 import {Dispatch} from 'redux'
 
-interface StateType{
-    isLoading: boolean,
-    data: {}[];
-    error: string
+interface DataFromApi {
+    
+        id: number;
+        name: string;
+        username: string;
+        email: string;
+        address: {};
+        phone: string;
+        website: string;
+        company: {};
 }
 
+interface StateType{
+    isLoading: boolean,
+    data?: DataFromApi[];
+    error: string
+}
 const initialState = {
     isLoading: false,
     data: [],
@@ -20,7 +31,7 @@ interface StartAction {
 
 interface SuccesAction {
     type: "FETCH-SUCCES";
-    payload: {}[];
+    payload: DataFromApi[];
     
 }
 interface FailedAction {
@@ -50,14 +61,16 @@ const fetchReducer = (state: StateType =initialState, action: Action) =>{
                 isLoading: false,
                 error: action.payload
             }
+        default:
+            return state
     }
 }
 
 export const getData =() =>{
-    return async (dispatch:Dispatch) =>{
+    return async(dispatch:Dispatch) =>{
         dispatch({type: "FETCH-START"})
         const sendReuest= async()=>{
-            const request= await axios("'https://jsonplaceholder.typicode.com/users'")
+            const request= await axios("https://jsonplaceholder.typicode.com/users")
             return request.data
         }
         try{
