@@ -57,7 +57,7 @@ export const getData =() =>{
     return async (dispatch:Dispatch) =>{
         dispatch({type: "FETCH-START"})
         const sendReuest= async()=>{
-            const request= await axios("http//:")
+            const request= await axios("'https://jsonplaceholder.typicode.com/users'")
             return request.data
         }
         try{
@@ -70,3 +70,5 @@ export const getData =() =>{
 }
 
 export default fetchReducer;
+
+export type State = ReturnType<typeof fetchReducer>
