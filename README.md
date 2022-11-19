@@ -1,8 +1,8 @@
 # Get data from API with Redux
 
 <img src="./readme_images/People List.png" alt="project image">
-<br />
-> See demo live :
+
+> See life: [Click here](https://react-tsc-redux-api.netlify.app 'Click to visit app')
 
 ## Description
 
